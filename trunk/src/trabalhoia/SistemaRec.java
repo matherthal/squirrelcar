@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Vector;
+import java.util.Collections;
 
 public class SistemaRec {
 
@@ -21,6 +22,7 @@ public class SistemaRec {
     private View view;
     public LinkedList<ClienteMedia> clienteMediaList = new LinkedList<ClienteMedia>();
     public LinkedList<Float> vetorPearson = new LinkedList<Float>();
+
     public SistemaRec(View view)
     {
         this.view = view;
@@ -46,6 +48,7 @@ public class SistemaRec {
 	}
 
     }
+
     public void mediaUsuarios()
     {
         ClienteMedia clienteMedia = new ClienteMedia();
@@ -83,94 +86,6 @@ public class SistemaRec {
             
         }
     }
-/*
-    public static double getPearsonCorrelation(double[] scores1,double[] scores2){
-        double result = 0;
-        double sum_sq_x = 0;
-        double sum_sq_y = 0;
-        double sum_coproduct = 0;
-        double mean_x = scores1[0];
-        double mean_y = scores2[0];
-        for(int i=2;i<scores1.length+1;i+=1){
-            double sweep =Double.valueOf(i-1)/i;
-            double delta_x = scores1[i-1]-mean_x;
-            double delta_y = scores2[i-1]-mean_y;
-            sum_sq_x += delta_x * delta_x * sweep;
-            sum_sq_y += delta_y * delta_y * sweep;
-            sum_coproduct += delta_x * delta_y * sweep;
-            mean_x += delta_x / i;
-            mean_y += delta_y / i;
-        }
-        double pop_sd_x = (double) Math.sqrt(sum_sq_x/scores1.length);
-        double pop_sd_y = (double) Math.sqrt(sum_sq_y/scores1.length);
-        double cov_x_y = sum_coproduct / scores1.length;
-        result = cov_x_y / (pop_sd_x*pop_sd_y);
-        return result;
-    }
-*/
-    /*public double[] search(String nome) {
-        ListIterator<Clientes> iter = clienteList.listIterator();
-        Clientes cliente = null;
-        ArrayList<Double> Dbl = new ArrayList<Double>();
-        ClienteMedia clienteMedia = null;
-
-        ListIterator<ClienteMedia> iter2 = clienteMediaList.listIterator();
-        while (iter2.hasNext()) {
-            clienteMedia = iter2.next();
-            if(clienteMedia != null && clienteMedia.getNome() != null)
-                if (clienteMedia.getNome().equalsIgnoreCase(nome))
-                    Dbl.add((double)clienteMedia.getMedia());
-        }
-
-        while (iter.hasNext()) {
-            cliente = iter.next();
-            if(cliente != null && cliente.getNome() != null)
-                if (cliente.getNome().equalsIgnoreCase(nome))
-                    Dbl.add((double)cliente.getNota());
-        }
-        double[] dbl = new double[Dbl.size()+1];
-        for (int i = 0; i<Dbl.size()+1; i++)
-            dbl[i] = Dbl.get(i);
-        return dbl;
-    }*/
-/*
-    public double[] search(String ID) {
-        ListIterator<Clientes> iter = clienteList.listIterator();
-        Clientes cliente = null;
-        ArrayList<Double> Dbl = new ArrayList<Double>();
-        Carros carro = null;
-
-        ListIterator<Carros> iter2 = carrosList.listIterator();
-        while (iter2.hasNext()) {
-            carro = iter2.next();
-            if(carro != null && carro.getID() != null)
-                if (carro.getID().equalsIgnoreCase(ID))
-                    Dbl.add((double)carro.getNota());
-        }
-
-        while (iter.hasNext()) {
-            cliente = iter.next();
-            if(cliente != null && cliente.getNome() != null)
-                if (cliente.getID().equalsIgnoreCase(ID))
-                    Dbl.add((double)cliente.getNota());
-        }
-        double[] dbl = new double[Dbl.size()+1];
-        for (int i = 0; i<Dbl.size()+1; i++)
-            dbl[i] = Dbl.get(i);
-        return dbl;
-    }
-
-    public void vetorPearson(Clientes cliente)
-    {
-        double[] atual = search(cliente.getNome());
-        for (int i = 0; i<clienteMediaList.size(); i++)
-        {
-            double[] temp = search(clienteMediaList.get(i).getNome());
- //           vetorPearson.add();
-        }
-    }
-*/
-
 
     public void ordenarporNome()
     {
@@ -204,72 +119,9 @@ public class SistemaRec {
     }
 
     public void OrdenaporAfinidade(){
-
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        ListIterator<Carros> iter2 = this.carrosList.listIterator();
-        Carros carro_ordena = null;
-        Carros carro_ordena_depois = null;
-        carro_ordena_depois = iter2.next();
-        Carros trocar = new Carros();
-        boolean trocou = true;
-        while(trocou){
-            trocou = false;
-            while(iter2.hasNext())
-            {
-                carro_ordena = iter.next();
-                carro_ordena_depois = iter2.next();
-                if((carro_ordena.getAfinidade() < (carro_ordena_depois.getAfinidade())))
-                {
-                   trocar.setAfinidade(carro_ordena_depois.getAfinidade());
-                   trocar.setAno(carro_ordena_depois.getAno());
-                   trocar.setCambio(carro_ordena_depois.getCambio());
-                   trocar.setCategoria(carro_ordena_depois.getCategoria());
-                   trocar.setCombustivel(carro_ordena_depois.getCombustivel());
-                   trocar.setCor(carro_ordena_depois.getCor());
-                   trocar.setID(carro_ordena_depois.getID());
-                   trocar.setMarca(carro_ordena_depois.getMarca());
-                   trocar.setModelo(carro_ordena_depois.getModelo());
-                   trocar.setPortas(carro_ordena_depois.getPortas());
-                   trocar.setPreco(carro_ordena_depois.getPreco());
-                
-                   carro_ordena_depois.setAfinidade(carro_ordena.getAfinidade());
-                   carro_ordena_depois.setAno(carro_ordena.getAno());
-                   carro_ordena_depois.setCambio(carro_ordena.getCambio());
-                   carro_ordena_depois.setCategoria(carro_ordena.getCategoria());
-                   carro_ordena_depois.setCombustivel(carro_ordena.getCombustivel());
-                   carro_ordena_depois.setCor(carro_ordena.getCor());
-                   carro_ordena_depois.setID(carro_ordena.getID());
-                   carro_ordena_depois.setMarca(carro_ordena.getMarca());
-                   carro_ordena_depois.setModelo(carro_ordena.getModelo());
-                   carro_ordena_depois.setPortas(carro_ordena.getPortas());
-                   carro_ordena_depois.setPreco(carro_ordena.getPreco());
-                   
-                   carro_ordena.setAfinidade(trocar.getAfinidade());
-                   carro_ordena.setAno(trocar.getAno());
-                   carro_ordena.setCambio(trocar.getCambio());
-                   carro_ordena.setCategoria(trocar.getCategoria());
-                   carro_ordena.setCombustivel(trocar.getCombustivel());
-                   carro_ordena.setCor(trocar.getCor());
-                   carro_ordena.setID(trocar.getID());
-                   carro_ordena.setMarca(trocar.getMarca());
-                   carro_ordena.setModelo(trocar.getModelo());
-                   carro_ordena.setPortas(trocar.getPortas());
-                   carro_ordena.setPreco(trocar.getPreco());
-
-                   trocou = true;
-                }
-
-            }
-
-            DebugOrdenar();
-            iter = this.carrosList.listIterator();
-            iter2 = this.carrosList.listIterator();
-
-            carro_ordena = iter.next();
-            carro_ordena_depois = iter2.next();
-            carro_ordena_depois = iter2.next();
-            }
+         Collections.sort(this.carrosList);
     }
+
 
         public void DebugOrdenar(){
         ListIterator<Carros> iter = this.carrosList.listIterator();
