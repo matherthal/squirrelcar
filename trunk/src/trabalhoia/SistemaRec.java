@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package trabalhoia;
 
 import java.io.IOException;
@@ -11,11 +6,6 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Vector;
 
-
-    /**
- *
- * @author Troy
- */
 public class SistemaRec {
 
     
