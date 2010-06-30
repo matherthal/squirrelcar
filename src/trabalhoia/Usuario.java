@@ -1,14 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package trabalhoia;
 
-/**
- *
- * @author Troy
- */
 public class Usuario {
 
     private String nomeusuario = null;

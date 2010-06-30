@@ -1,14 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package trabalhoia;
 
-/**
- *
- * @author Rondon
- */
 public class ClienteMedia
 {
     private String nome = null;

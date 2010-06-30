@@ -10,21 +10,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * View.java
- *
- * Created on 07/12/2009, 12:06:26
- */
-
-/**
- *
- * @author Rondon
- */
 public class View extends javax.swing.JFrame {
 
     /** Creates new form View */
