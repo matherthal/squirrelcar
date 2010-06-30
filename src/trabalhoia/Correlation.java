@@ -3,7 +3,7 @@ package trabalhoia;
 import java.io.*;
 
 public class Correlation {
-    public static double getPearsonCorrelation(double[] scores1,double[] scores2){
+    public static double getPersonCorrelation(double[] scores1,double[] scores2){
         double result = 0;
         double sum_sq_x = 0;
         double sum_sq_y = 0;
@@ -27,9 +27,9 @@ public class Correlation {
         return result;
     }
 	/* Recebe 1 - vetor de tamanho 3 contendo: as avaliacoes dos usuarios mais proximos ao usuario Corrente
-			  2 - vetor de tamanho 3 contendo: as medias das avaliacoes dadas pelo usuarios mais proximos
-			  3 - a media das avaliacoes do Usuario Corrente
-			  4 - vetor de tamanho 3 contendo a similaridade entre os usuarios e o usuario Corrente */
+		  2 - vetor de tamanho 3 contendo: as medias das avaliacoes dadas pelo usuarios mais proximos
+	          3 - a media das avaliacoes do Usuario Corrente
+		  4 - vetor de tamanho 3 contendo a similaridade entre os usuarios e o usuario Corrente */
 
 	public static double previsaoAval(double[] avalUsuarios,double[] avalMediaUsuarios,double mediaUsuarioCorr, double[] similUsuarios){
 		int i;
@@ -48,22 +48,5 @@ public class Correlation {
                 /*Sean modificou aqui(Fim)*/
                 //Original abaixo:
                 //return mediaUsuarioCorr + (somaDif/somaSimil);
-
         }
-
-        //Nada, por mim pode apagar:
-	/*public static void main(String args[]){
-		double[] aval = {2,3,4};
-		double[] avalMedia = {3.1,3.3,3.1};
-		double[] similaridade = {0.76,0.64,0.59};
-
-		double retorno;
-		retorno = previsaoAval(aval,avalMedia,3.1,similaridade);
-
-
-		System.out.printf("%.2f\n",retorno);
-
-	}*/
-
-
 }
