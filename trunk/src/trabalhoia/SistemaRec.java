@@ -122,23 +122,8 @@ public class SistemaRec {
          Collections.sort(this.carrosList);
     }
 
-
-        public void DebugOrdenar(){
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        Carros imprime = null;
-        while (iter.hasNext()) {
-            imprime = iter.next();
-            System.out.println("************ORDENANDO******************");
-            System.out.println("Afinidade: " + imprime.getAfinidade());
-            System.out.println("ID: " + imprime.getID());
-            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
-
-        }
-    }
-
     public void Imprimir(Carros imprime){
-        System.out.println("------------IMPRIMINDO----------------------");
+        System.out.println("ITEM----------------------------------------");
         System.out.println("Afinidade: " + imprime.getAfinidade());
         System.out.println("Marca: " + imprime.getMarca());
         System.out.println("Modelo: " + imprime.getModelo());
@@ -151,8 +136,8 @@ public class SistemaRec {
         System.out.println("Cambio: " + imprime.getCambio());
         System.out.println("ID: " + imprime.getID());
         System.out.println("--------------------------------------------");
-
     }
+
     public void Imprimir_Resultado(){
         ListIterator<Carros> iter = this.carrosList.listIterator();
         Carros carro = null;
@@ -186,9 +171,6 @@ public class SistemaRec {
         while (iter.hasNext()) {
             carro_reset = iter.next();
             carro_reset.setAfinidade(0);
-            System.out.println("----------------------------------");
-            System.out.println("ID: " + carro_reset.getID());
-            System.out.println("AfinidadeRESETADA: " + carro_reset.getAfinidade());
         }
     }
 
@@ -207,11 +189,9 @@ public class SistemaRec {
         carro_resetnota.setNota(0);
         carro_resetnota.setAvaliacao(0);
         carro_resetnota.setAvaliacaoPrev(0);
-        System.out.println("----------------------------------");
-        System.out.println("ID: " + carro_resetnota.getID());
-        System.out.println("AfinidadeRESETADA: " + carro_resetnota.getAfinidade());
         }
     }
+
     public void Recomendacao(Usuario usuario){
         ListIterator<Carros> iter = this.carrosList.listIterator();
         Carros carro_aux = null;
@@ -285,7 +265,7 @@ public class SistemaRec {
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+1);
             //total 20
-            System.out.println("--------DEBUGANDO RECOMENDA--------------");
+            System.out.println("RECOMENDACAO-----------------------------");
             System.out.println("ID: " + carro_aux.getID());
             System.out.println("Afinidade: " + carro_aux.getAfinidade());
             System.out.println("-----------------------------------------");
@@ -317,7 +297,7 @@ public class SistemaRec {
                 }
             }
             iter2 = this.clienteList.listIterator();
-            System.out.println("--------DEBUGANDO MediaCarro--------------");
+            System.out.println("AVALIACAO-------------------------------");
             System.out.println("Nota: " + nota);
             System.out.println("Count: " + count);
             if (count != 0)
@@ -514,11 +494,11 @@ public class SistemaRec {
         ImprimirMediaList();
         acha3menores ();
         
-        System.out.println("--------**************************************--------------");
+        System.out.println("VIZINHOS-----------------------------------------");
         System.out.println("Menor1:" + clienteMediaList.get(menor1).getNome());
         System.out.println("Menor2:" + clienteMediaList.get(menor2).getNome());
         System.out.println("Menor3:" + clienteMediaList.get(menor3).getNome());
-        System.out.println("--------**************************************--------------");
+        System.out.println("-------------------------------------------------");
         
         while (iter.hasNext())
         {
@@ -569,13 +549,11 @@ public class SistemaRec {
         ClienteMedia imprime = null;
         while (iter.hasNext()) {
             imprime = iter.next();
-            System.out.println("------------MEDIALIST----------------------");
+            System.out.println("MEDIALIST-----------------------------------");
             System.out.println("Nome: " + imprime.getNome());
             System.out.println("Media: " + imprime.getMedia());
             System.out.println("Dist: " + imprime.getDist());
             System.out.println("--------------------------------------------");
-
-
         }
     }
 
@@ -584,11 +562,12 @@ public class SistemaRec {
         Clientes imprime = null;
         while (iter.hasNext()) {
             imprime = iter.next();
+            /*
+             * Pra que serve isso aqui? -Giulio
+             */
             System.out.println("------------CLIENTELIST------XXXXXXXXXXXX---");
             System.out.println("Nome: " + imprime.getNome());
             System.out.println("--------------------------------------------");
-
-
         }
     }
 }

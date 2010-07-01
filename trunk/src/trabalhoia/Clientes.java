@@ -46,8 +46,4 @@ public class Clientes {
     public void setNota (float val) {
     this.nota = val;
     }
-
-
-    
-
 }
