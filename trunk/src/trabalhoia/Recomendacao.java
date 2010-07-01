@@ -7,30 +7,27 @@ import java.util.ListIterator;
 import java.util.Vector;
 import java.util.Collections;
 
-public class SistemaRec {
-
-    
-
+public class Recomendacao {
     public int menor1 = 0;
     public int menor2 = 0;
     public int menor3 = 0;
-    public LinkedList<Carros> carrosList = new LinkedList<Carros>();
-    public LinkedList<Clientes> clienteList = new LinkedList<Clientes>();
-    private Carros carro = new Carros();
-    private Clientes cliente = new Clientes();
-    public Carros usuario = new Carros();
+    public LinkedList<Carro> carrosList = new LinkedList<Carro>();
+    public LinkedList<Cliente> clienteList = new LinkedList<Cliente>();
+    private Carro carro = new Carro();
+    private Cliente cliente = new Cliente();
+    public Carro usuario = new Carro();
     private View view;
     public LinkedList<ClienteMedia> clienteMediaList = new LinkedList<ClienteMedia>();
     public LinkedList<Float> vetorPearson = new LinkedList<Float>();
 
-    public SistemaRec(View view)
+    public Recomendacao(View view)
     {
         this.view = view;
     }
 
 
     public void ProcessaArquivoCarro() throws IOException{
-        ArquivoCarro arq_carro = new ArquivoCarro("EntradaCarros.txt");
+        ParserCarros arq_carro = new ParserCarros("EntradaCarros.txt");
         while(arq_carro.arq.ready())
         {
             carro = arq_carro.LerCarrosDoArquivo();
@@ -40,13 +37,12 @@ public class SistemaRec {
     }
 
     public void ProcessaArquivoCliente() throws IOException{
-        ArquivoCliente arq_cliente = new ArquivoCliente("EntradaClientes.txt");
+        ParserCliente arq_cliente = new ParserCliente("EntradaClientes.txt");
         while(arq_cliente.arqc.ready())
         {
             cliente = arq_cliente.LerClientesDoArquivo();
             clienteList.add(cliente);
 	}
-
     }
 
     public void mediaUsuarios()
@@ -89,7 +85,7 @@ public class SistemaRec {
 
     public void ordenarporNome()
     {
-        Clientes trocar = new Clientes();
+        Cliente trocar = new Cliente();
         boolean trocou = true;
         while(trocou){
             trocou = false;
@@ -122,7 +118,7 @@ public class SistemaRec {
          Collections.sort(this.carrosList);
     }
 
-    public void Imprimir(Carros imprime){
+    public void Imprimir(Carro imprime){
         System.out.println("ITEM----------------------------------------");
         System.out.println("Afinidade: " + imprime.getAfinidade());
         System.out.println("Marca: " + imprime.getMarca());
@@ -139,8 +135,8 @@ public class SistemaRec {
     }
 
     public void Imprimir_Resultado(){
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        Carros carro = null;
+        ListIterator<Carro> iter = this.carrosList.listIterator();
+        Carro carro = null;
         int i = 0;
         while (iter.hasNext())
         {
@@ -154,8 +150,8 @@ public class SistemaRec {
     }
 
     public void Imprimir_Tudo(){
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        Carros carro = null;
+        ListIterator<Carro> iter = this.carrosList.listIterator();
+        Carro carro = null;
         int i = 0;
         while (iter.hasNext())
         {
@@ -166,8 +162,8 @@ public class SistemaRec {
         }
     }
     public void ResetAfinidade(){
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        Carros carro_reset = null;
+        ListIterator<Carro> iter = this.carrosList.listIterator();
+        Carro carro_reset = null;
         while (iter.hasNext()) {
             carro_reset = iter.next();
             carro_reset.setAfinidade(0);
@@ -181,8 +177,8 @@ public class SistemaRec {
     }
 
     public void ResetNotaCarro(){
-    ListIterator<Carros> iter = this.carrosList.listIterator();
-    Carros carro_resetnota = null;
+    ListIterator<Carro> iter = this.carrosList.listIterator();
+    Carro carro_resetnota = null;
     while (iter.hasNext())
     {
         carro_resetnota = iter.next();
@@ -193,8 +189,8 @@ public class SistemaRec {
     }
 
     public void Recomendacao(Usuario usuario){
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        Carros carro_aux = null;
+        ListIterator<Carro> iter = this.carrosList.listIterator();
+        Carro carro_aux = null;
         while (iter.hasNext()) {
             carro_aux = iter.next();
             if (usuario.getMarca() != null)
@@ -275,10 +271,10 @@ public class SistemaRec {
     }
 
     public void AvaliacaoClientesCarros() {
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        ListIterator<Clientes> iter2 = this.clienteList.listIterator();
-        Carros carro_aux = null;
-        Clientes cliente_aux2 = null;
+        ListIterator<Carro> iter = this.carrosList.listIterator();
+        ListIterator<Cliente> iter2 = this.clienteList.listIterator();
+        Carro carro_aux = null;
+        Cliente cliente_aux2 = null;
         
         //System.out.println("----------Categoria Usuario: " + categoria + "-------------------");
         while (iter.hasNext())
@@ -338,8 +334,8 @@ public class SistemaRec {
 
     /*a nota dos usuarios utilizadas para o calculo do Correlation*/
         public float PegaNotaUsuarioProximo(String nome, String ID) {
-        ListIterator<Clientes> iter = this.clienteList.listIterator();
-        Clientes cliente = null;
+        ListIterator<Cliente> iter = this.clienteList.listIterator();
+        Cliente cliente = null;
         float nota = 0;
         boolean achou = false;
 
@@ -363,10 +359,10 @@ public class SistemaRec {
     {
 
         String nome_aux = null;
-        ListIterator<Clientes> iter = this.clienteList.listIterator();
-        ListIterator<Clientes> iter2 = this.clienteList.listIterator();
-        Clientes usuarioCorrente = null;
-        Clientes cliente2 = null;
+        ListIterator<Cliente> iter = this.clienteList.listIterator();
+        ListIterator<Cliente> iter2 = this.clienteList.listIterator();
+        Cliente usuarioCorrente = null;
+        Cliente cliente2 = null;
         float dist = 0;
         String ID = null;
         String ID2 = null;
@@ -475,8 +471,8 @@ public class SistemaRec {
         double[] vetormedia = new double[3];
         double[] vetoravaliacao = new double[3];
         double[] vetorsim = new double[3];
-        ListIterator<Carros> iter = this.carrosList.listIterator();
-        Carros carro = null;
+        ListIterator<Carro> iter = this.carrosList.listIterator();
+        Carro carro = null;
         int i = 0;
         float notaUsuario = 0;
         float nota1 = 0;
@@ -530,7 +526,7 @@ public class SistemaRec {
                 vetorsim[1] = sim2;
                 vetorsim[2] = sim3;
                  
-                float result = (float) Correlation.previsaoAval(vetoravaliacao,vetormedia,mediaU,vetorsim);
+                float result = (float) Correlacao.previsaoAval(vetoravaliacao,vetormedia,mediaU,vetorsim);
                 carro.setAvaliacaoPrev(result);
 
             }
@@ -558,8 +554,8 @@ public class SistemaRec {
     }
 
         public void ImprimirClienteList(){
-        ListIterator<Clientes> iter = this.clienteList.listIterator();
-        Clientes imprime = null;
+        ListIterator<Cliente> iter = this.clienteList.listIterator();
+        Cliente imprime = null;
         while (iter.hasNext()) {
             imprime = iter.next();
             /*

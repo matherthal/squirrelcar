@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ArquivoCliente {
+public class ParserCliente {
     public BufferedReader arqc;
 
-    public ArquivoCliente(String NomeDoArquivo) throws IOException{
+    public ParserCliente(String NomeDoArquivo) throws IOException{
 		try {
 	        arqc = new BufferedReader(new FileReader(NomeDoArquivo));
 	        arqc.readLine(); //Le primeira linha de coment�rio e dispensa
@@ -25,7 +25,7 @@ public class ArquivoCliente {
 		return arqc.ready() ? arqc.readLine() : "" ;
 	}
 
-    public Clientes LerClientesDoArquivo() throws IOException{
+    public Cliente LerClientesDoArquivo() throws IOException{
                 float nota;
                 String notaSTR;
 		String nome, id, categoria;
@@ -48,7 +48,7 @@ public class ArquivoCliente {
                 System.out.println("Categoria: " + categoria);
                 System.out.println("----------------------------------");
 
-		Clientes cliente = new Clientes();
+		Cliente cliente = new Cliente();
                 cliente.setNome(nome);
                 cliente.setID(id);
                 cliente.setNota(nota);
@@ -56,5 +56,4 @@ public class ArquivoCliente {
 
 		return cliente;
 	}
-
 }

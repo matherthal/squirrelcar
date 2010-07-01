@@ -4,14 +4,13 @@ import java.io.IOException;
 
 public class Main {
 
-    static SistemaRec recomendando;
+    static Recomendacao recomendando;
     static Usuario usuario = new Usuario();
     static float avaliacao_grupo = 0;
 
-
     public static void main(String[] args) throws IOException {
         final View tela = new View();
-        recomendando = new SistemaRec(tela);
+        recomendando = new Recomendacao(tela);
         tela.setRecomendando(recomendando);
         recomendando.ProcessaArquivoCarro();
         recomendando.ProcessaArquivoCliente();
