@@ -30,7 +30,7 @@ public class SistemaRec {
 
 
     public void ProcessaArquivoCarro() throws IOException{
-        ArquivoCarro arq_carro = new ArquivoCarro("../EntradaCarros.txt");
+        ArquivoCarro arq_carro = new ArquivoCarro("EntradaCarros.txt");
         while(arq_carro.arq.ready())
         {
             carro = arq_carro.LerCarrosDoArquivo();
@@ -40,7 +40,7 @@ public class SistemaRec {
     }
 
     public void ProcessaArquivoCliente() throws IOException{
-        ArquivoCliente arq_cliente = new ArquivoCliente("../EntradaClientes.txt");
+        ArquivoCliente arq_cliente = new ArquivoCliente("EntradaClientes.txt");
         while(arq_cliente.arqc.ready())
         {
             cliente = arq_cliente.LerClientesDoArquivo();

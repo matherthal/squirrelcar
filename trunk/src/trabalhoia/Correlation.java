@@ -42,7 +42,7 @@ public class Correlation {
                 }
 		/*Sean modificou aqui(inicio)*/
                 double retorno = (mediaUsuarioCorr + (somaDif/somaSimil));
-                if(retorno<0){retorno=retorno*(-1);}
+                if(retorno<0){retorno=-1;}
                 retorno = ((float) ((Math.round(retorno * 10.0)) / 10.0));
                 return retorno;
                 /*Sean modificou aqui(Fim)*/
