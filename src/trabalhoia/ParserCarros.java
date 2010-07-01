@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ArquivoCarro {
+public class ParserCarros {
     public BufferedReader arq;
         //Cria um arquivo de entrada
-    	public ArquivoCarro(String NomeDoArquivo) throws IOException{
+    	public ParserCarros(String NomeDoArquivo) throws IOException{
 		try {
 	        arq = new BufferedReader(new FileReader(NomeDoArquivo));
 	        arq.readLine(); //Le primeira linha de coment�rio e dispensa
@@ -21,11 +21,11 @@ public class ArquivoCarro {
 	private String LerLinha() throws IOException{
 		//Arquivo esta pronto? Entao retorna linha String
 		//Senao , retorna vazio string;
-		return arq.ready() ? arq.readLine() : "" ;
+		return arq.ready() ? arq.readLine() : "";
 	}
 
     //converte linha de arquivo em um objeto do tipo processo
-	public Carros LerCarrosDoArquivo() throws IOException{
+	public Carro LerCarrosDoArquivo() throws IOException{
                 int portas, preco, ano;
                 String portasSTR, precoSTR, anoSTR;
 		String marca, modelo, combustivel, cor, categoria;
@@ -62,7 +62,7 @@ public class ArquivoCarro {
                 System.out.println("ID: " + id);
                 System.out.println("----------------------------------");
 
-                Carros carro = new Carros();
+                Carro carro = new Carro();
                 carro.setMarca(marca);
                 carro.setModelo(modelo);
                 carro.setPortas(portas);

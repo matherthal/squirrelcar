@@ -2,7 +2,7 @@ package trabalhoia;
 
 import java.io.*;
 
-public class Correlation {
+public class Correlacao {
     public static double getPersonCorrelation(double[] scores1, double[] scores2){
         double result = 0;
         double sum_sq_x = 0;

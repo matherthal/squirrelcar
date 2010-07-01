@@ -1,6 +1,6 @@
 package trabalhoia;
 
-public class Carros implements Comparable {
+public class Carro implements Comparable {
 
     private String marca = null;
     private String modelo = null;
@@ -18,7 +18,7 @@ public class Carros implements Comparable {
     private float avaliacaoprev = -1;
       
     public int compareTo(Object o) {
-        Carros carro = (Carros)o;
+        Carro carro = (Carro)o;
         return carro.afinidade - this.afinidade;
     }
 

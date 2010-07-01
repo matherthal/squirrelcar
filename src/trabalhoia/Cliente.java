@@ -1,16 +1,12 @@
 package trabalhoia;
 
-public class Clientes {
+public class Cliente {
     
     private String nome = null;
     private String categoria = null;
     private String id = null;
     private float nota = 0;
-    private float media = 0;
-    
-
-    public Clientes(){}
-    
+    private float media = 0;    
 
     public String getNome () {
     return nome;

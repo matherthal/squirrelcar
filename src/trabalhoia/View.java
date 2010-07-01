@@ -14,7 +14,7 @@ public class View extends javax.swing.JFrame {
 
     /** Creates new form View */
     private Usuario usuario;
-    private SistemaRec recomendando;
+    private Recomendacao recomendando;
     private DefaultTableModel model;
     public View() {
         initComponents();
@@ -31,12 +31,12 @@ public class View extends javax.swing.JFrame {
         this.usuario = usuario;
     }
 
-    public void setRecomendando(SistemaRec recomendando)
+    public void setRecomendando(Recomendacao recomendando)
     {
         this.recomendando = recomendando;
     }
 
-    public void insert(int index, Carros carro)
+    public void insert(int index, Carro carro)
     {
 
         Object[] obj = new Object[jTable1.getColumnCount()];
@@ -530,7 +530,7 @@ public class View extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Clientes cliente = new Clientes();
+        Cliente cliente = new Cliente();
         cliente.setNome(jTextField6.getText());
         cliente.setID(jTextField7.getText());
         int nota = 0;
