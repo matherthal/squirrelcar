@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class View extends javax.swing.JFrame {
 
     /** Creates new form View */
-    private Usuario usuario;
+    private Interesse usuario;
     private Recomendacao recomendando;
     private DefaultTableModel model;
     public View() {
@@ -21,12 +21,12 @@ public class View extends javax.swing.JFrame {
         model = (DefaultTableModel) jTable1.getModel();
     }
 
-    public Usuario getUsuario()
+    public Interesse getUsuario()
     {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario)
+    public void setUsuario(Interesse usuario)
     {
         this.usuario = usuario;
     }

@@ -174,7 +174,7 @@ public class Recomendacao {
         }
     }
 
-    public void Recomendacao(Usuario usuario){
+    public void Recomendacao(Interesse usuario){
         ListIterator<Carro> iter = this.carrosList.listIterator();
         Carro carro_aux = null;
         while (iter.hasNext()) {
@@ -262,7 +262,7 @@ public class Recomendacao {
         Carro carro_aux = null;
         Cliente cliente_aux2 = null;
         
-        //System.out.println("----------Categoria Usuario: " + categoria + "-------------------");
+        //System.out.println("----------Categoria Interesse: " + categoria + "-------------------");
         while (iter.hasNext())
         {
             float nota = 0;
@@ -452,7 +452,7 @@ public class Recomendacao {
 
     }
 
-    public void CalculandoNotaPrevista(Usuario usuario){
+    public void CalculandoNotaPrevista(Interesse usuario){
         //Vetores para a media e as notas das 3 pessoas + proximas
         double[] vetormedia = new double[3];
         double[] vetoravaliacao = new double[3];
