@@ -3,7 +3,7 @@ package trabalhoia;
 import java.io.*;
 
 public class Correlacao {
-    public static double getPersonCorrelation(double[] scores1, double[] scores2){
+    public static double getPearsonCorrelation(double[] scores1, double[] scores2){
         double result = 0;
         double sum_sq_x = 0;
         double sum_sq_y = 0;
@@ -12,7 +12,7 @@ public class Correlacao {
         double mean_y = scores2[0];
 
         for(int i=2;i<scores1.length+1;i+=1){
-            double sweep =Double.valueOf(i-1)/i;
+            double sweep = Double.valueOf(i-1)/i;
             double delta_x = scores1[i-1]-mean_x;
             double delta_y = scores2[i-1]-mean_y;
             sum_sq_x += delta_x * delta_x * sweep;

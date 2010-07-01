@@ -521,6 +521,7 @@ public class View extends javax.swing.JFrame {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     private String espaco(int tam,int lim)
     {
         String str = "";
