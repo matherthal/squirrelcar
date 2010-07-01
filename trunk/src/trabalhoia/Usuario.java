@@ -14,19 +14,6 @@ public class Usuario {
     private String categoria = null;
     private String cambio = null;
 
-    /*
-    portas - 2/4
-    Categoria - Conversivel/monovolume/van/esportivo/picapes/wagon/hatch/sedan ?
-    combustivel - alcool/gasolina/gnv/diesel
-    Cambio - Manual/Automatico
-     */
-
-    public Usuario()
-    {
-
-    }
-
-
     public String getNome () {
     return nomeusuario;
     }
