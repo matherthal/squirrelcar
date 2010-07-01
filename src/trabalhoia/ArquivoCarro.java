@@ -43,13 +43,13 @@ public class ArquivoCarro {
 		anoSTR = linha.substring(74,78);
 		categoria = linha.substring(80,91).trim();
                 cambio = linha.substring(93,103).trim();
-                id = linha.substring(105,108).trim();
+                id = linha.substring(104,108).trim();
                 //Converte os strings para inteiro
 		portas = Integer.parseInt(portasSTR.trim());
                 preco = Integer.parseInt(precoSTR.trim());
 		ano = Integer.parseInt(anoSTR.trim());
 
-                System.out.println("--------CARRO---------------------");
+                System.out.println("CARRO-----------------------------");
                 System.out.println("Marca: " + marca);
                 System.out.println("Modelo: " + modelo);
                 System.out.println("Portas: " + portas);

@@ -16,16 +16,7 @@ public class Carros implements Comparable {
     private float nota = 0;
     private float avaliacao = -1;
     private float avaliacaoprev = -1;
-
-    /*
-    portas - 2/4
-    Categoria - Conversivel/monovolume/van/esportivo/picapes/wagon/hatch/sedan
-    combustivel - alcool/gasolina/gnv/diesel
-    Cambio - Manual/Automatico
-     */
       
-    public Carros(){}
-
     public int compareTo(Object o) {
         Carros carro = (Carros)o;
         return carro.afinidade - this.afinidade;

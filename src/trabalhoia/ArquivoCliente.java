@@ -41,7 +41,7 @@ public class ArquivoCliente {
                 System.out.println("Nota: " + notaSTR);
 		nota = Float.parseFloat(notaSTR.trim());
 
-                System.out.println("--------CLIENTE---------------------");
+                System.out.println("CLIENTE---------------------------");
                 System.out.println("Nome: " + nome);
                 System.out.println("IDCarro: " + id);
                 System.out.println("Nota: " + nota);
