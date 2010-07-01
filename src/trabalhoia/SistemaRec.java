@@ -438,66 +438,6 @@ public class SistemaRec {
         }
         return false;
     }
-/*
-        for (int i = 0; i<clienteMediaList.size(); i++)
-        {
-            nome_aux = clienteMediaList.get(i).getNome();
-            for (int j = 0; j<clienteList.size(); j++)
-            {
-                    if (clienteList.get(j).getNome().equalsIgnoreCase(nome_aux))
-                    {
-                        for (int k = 0; k<clienteList.size(); k++)
-                        {
-                            if(clienteList.get(k).getNome().equalsIgnoreCase(nome) && (clienteList.get(k).getID().equalsIgnoreCase(clienteList.get(j).getID())))
-                            {
-                                System.out.println("--------CALCULANDO DIST-------------------------------------");
-                                System.out.println("Nome: " + clienteList.get(k).getNome());
-                                System.out.println("nota1:" + (clienteList.get(j).getNota()/10));
-                                System.out.println("nota2:" + (clienteList.get(k).getNota()/10));
-                                System.out.println("nota1 - nota2:" + Math.pow((clienteList.get(j).getNota()/10) - (clienteList.get(k).getNota()/10), 2));
-                                System.out.println("--------**************************************--------------");
-                                dist = (float)(dist + Math.pow((clienteList.get(j).getNota()/10) - (clienteList.get(k).getNota()/10), 2));
-                            }
-                        }
-                    }
-            }
-            dist = (float) Math.sqrt(dist);
-            System.out.println("--------**************************************--------------");
-            System.out.println("Nome: " + clienteMediaList.get(i).getNome());
-            System.out.println("Dist:" + dist);
-            System.out.println("--------**************************************--------------");
-            clienteMediaList.get(i).setDist(dist);
-
-
-
-
-
-
-
-*/
-            /*
-            while (iter.hasNext())
-            {
-                usuarioCorrente = iter.next();
-                if (usuarioCorrente.getNome().equalsIgnoreCase(nome))
-                {
-                    iter2 = this.clienteList.listIterator();
-                    while (iter2.hasNext())
-                    {
-                        cliente2 = iter2.next();
-                        if (cliente2.getNome().equalsIgnoreCase(nome_aux) && cliente2.getID().equalsIgnoreCase(usuarioCorrente.getID()))
-                        {
-                           //dist = dist + ((usuarioCorrente.getNota() - cliente2.getNota())*(usuarioCorrente.getNota() - cliente2.getNota()));
-                            //dist = dist + quadrado da (nota usuario - nota cliente)
-                            dist = (float)(dist + Math.pow((usuarioCorrente.getNota()/10) - (cliente2.getNota()/10), 2));
-                        }
-                    }
-                }
-            }
-
-            dist = (float) Math.sqrt(dist);
-            clienteMediaList.get(i).setDist(dist);
-             */
         
 /* procura as 3 pessoas que estao + proximas do usuario */
     public void acha3menores ()
@@ -544,27 +484,6 @@ public class SistemaRec {
                             dist3 = clienteMediaList.get(i).getDist();
                         }
                 }
-                
-                /* Nada, pode apagar
-                if (clienteMediaList.get(menor1).getDist() > clienteMediaList.get(i).getDist())
-                {
-                    System.out.println("LALALALALLALALALALALALALALLALALALALALALALLALALALALA");
-                    menor3 = menor2;
-                    menor2 = menor1;
-                    menor1 = i;
-                }
-                else
-                {
-                    if(clienteMediaList.get(menor2).getDist() > clienteMediaList.get(i).getDist() )
-                    {
-                        menor3 = menor2;
-                        menor2 = i;
-                    }
-                    else
-                        if (clienteMediaList.get(menor3).getDist() > clienteMediaList.get(i).getDist() )
-                            menor3 = i; 
-                }
-              */
             }
         }
 
@@ -572,8 +491,6 @@ public class SistemaRec {
     }
 
     public void CalculandoNotaPrevista(Usuario usuario){
-
-
         //Vetores para a media e as notas das 3 pessoas + proximas
         double[] vetormedia = new double[3];
         double[] vetoravaliacao = new double[3];
@@ -674,18 +591,5 @@ public class SistemaRec {
 
         }
     }
-    /* Faz o (1-dist) para achar a distancia verdadeira */
-    /*
-    public void DistanciaUsuarioClientes()
-    {
-        ListIterator<ClienteMedia> iter = this.clienteMediaList.listIterator();
-        ClienteMedia cliente2 = null;
-        while (iter.hasNext())
-        {
-            cliente2 = iter.next();
-            cliente2.setDist(Math.abs(1 - cliente2.getDist()));
-        }
-    }
-    */
 }
 
