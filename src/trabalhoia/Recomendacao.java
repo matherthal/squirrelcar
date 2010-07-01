@@ -525,7 +525,21 @@ public class Recomendacao {
             }
         }
     }
-    
+
+    public void Imprimir_Resultado(){
+        ListIterator<Carro> iter = this.carrosList.listIterator();
+        Carro carro = null;
+        int i = 0;
+        while (iter.hasNext())
+        {
+            carro = iter.next();
+            if (carro.getAfinidade() >= 10)
+            {
+                view.insert(i, carro);
+                ++i;
+            }
+        }
+    }
     
     public void ImprimirMediaList(){
         ListIterator<ClienteMedia> iter = this.clienteMediaList.listIterator();
