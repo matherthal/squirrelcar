@@ -25,7 +25,7 @@ public class Recomendacao {
         this.view = view;
     }
 
-
+    //Processa Arquivo contendo as entradas dos carros
     public void ProcessaArquivoCarro() throws IOException{
         ParserCarros arq_carro = new ParserCarros("EntradaCarros.txt");
         while(arq_carro.arq.ready())
@@ -36,6 +36,7 @@ public class Recomendacao {
 
     }
 
+    //Processa as entradas do arquivo contendo as entradas dos clientes
     public void ProcessaArquivoCliente() throws IOException{
         ParserCliente arq_cliente = new ParserCliente("EntradaClientes.txt");
         while(arq_cliente.arqc.ready())
@@ -45,6 +46,7 @@ public class Recomendacao {
 	}
     }
 
+    //calcula a média do cliente
     public void mediaUsuarios()
     {
         ClienteMedia clienteMedia = new ClienteMedia();
@@ -83,6 +85,7 @@ public class Recomendacao {
         }
     }
 
+    //Ordena Os clientes alfabeticamente
     public void ordenarporNome()
     {
         Cliente trocar = new Cliente();
@@ -114,10 +117,12 @@ public class Recomendacao {
         }
     }
 
+    //Ordena na interface por afinidade
     public void OrdenaporAfinidade(){
          Collections.sort(this.carrosList);
     }
 
+    //Imprime resultado da pesquisa
     public void Imprimir(Carro imprime){
         System.out.println("ITEM----------------------------------------");
         System.out.println("Afinidade: " + imprime.getAfinidade());
@@ -134,7 +139,7 @@ public class Recomendacao {
         System.out.println("--------------------------------------------");
     }
 
-
+    //Imprime tudo
     public void Imprimir_Tudo(){
         ListIterator<Carro> iter = this.carrosList.listIterator();
         Carro carro = null;
@@ -147,6 +152,8 @@ public class Recomendacao {
 
         }
     }
+
+    //Reseta as afinidades do usuário atual, quando for pesquisado outro usuário
     public void ResetAfinidade(){
         ListIterator<Carro> iter = this.carrosList.listIterator();
         Carro carro_reset = null;
@@ -156,12 +163,14 @@ public class Recomendacao {
         }
     }
 
+    //Reseta as médias do usuário atual, quando for pesquisado outro usuário
     public void ResetMediaList(){
         LinkedList<ClienteMedia> iter = this.clienteMediaList;
         iter.clear();
 
     }
 
+    //Reseta as notas de carros dadas pelo usuário atual, quando for pesquisado outro usuário
     public void ResetNotaCarro(){
     ListIterator<Carro> iter = this.carrosList.listIterator();
     Carro carro_resetnota = null;
@@ -174,6 +183,7 @@ public class Recomendacao {
         }
     }
 
+    //Seta o nível de afinidade que um usuário terá com um carro
     public void Recomendacao(Interesse usuario){
         ListIterator<Carro> iter = this.carrosList.listIterator();
         Carro carro_aux = null;
@@ -261,7 +271,8 @@ public class Recomendacao {
         }
 
     }
-
+    
+    //Aqui se avalia os carros
     public void AvaliacaoClientesCarros() {
         ListIterator<Carro> iter = this.carrosList.listIterator();
         ListIterator<Cliente> iter2 = this.clienteList.listIterator();
@@ -302,9 +313,7 @@ public class Recomendacao {
         }
     }
 
-
-
-/*a media das avaliacoes utilizadas para o calculo do Correlation*/
+    // A media das avaliacoes utilizadas para o calculo da Correlação
     public float AchaMedia(String nome) {
         ListIterator<ClienteMedia> iter = this.clienteMediaList.listIterator();
         ClienteMedia cliente = null;
@@ -324,8 +333,8 @@ public class Recomendacao {
         return media;
     }
 
-    /*a nota dos usuarios utilizadas para o calculo do Correlation*/
-        public float PegaNotaUsuarioProximo(String nome, String ID) {
+    // A nota dos usuarios utilizadas para o calculo do Correlação
+    public float PegaNotaUsuarioProximo(String nome, String ID) {
         ListIterator<Cliente> iter = this.clienteList.listIterator();
         Cliente cliente = null;
         float nota = 0;
@@ -344,10 +353,9 @@ public class Recomendacao {
         return -1;
     }
 
-
-/* Funcao para calcular a distancia euclidiana. */
+    // Funcao para calcular a distancia euclidiana
     public void DistanciaEuclidiana(String nome)
-            //o nome = nome do usario corrente
+    //o nome = nome do usario corrente
     {
 
         String nome_aux = null;
@@ -407,7 +415,7 @@ public class Recomendacao {
         return false;
     }
 
-/* procura as 3 pessoas que estao + proximas do usuario */
+    //Procura as 3 pessoas que estao + proximas do usuario
     public void acha3menores ()
     {
         menor1 = 0;
@@ -560,7 +568,7 @@ public class Recomendacao {
         }
     }
 
-        public void ImprimirClienteList(){
+    public void ImprimirClienteList(){
         ListIterator<Cliente> iter = this.clienteList.listIterator();
         Cliente imprime = null;
         while (iter.hasNext()) {
