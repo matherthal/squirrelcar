@@ -134,21 +134,7 @@ public class Recomendacao {
         System.out.println("--------------------------------------------");
     }
 
-    public void Imprimir_Resultado(){
-        ListIterator<Carro> iter = this.carrosList.listIterator();
-        Carro carro = null;
-        int i = 0;
-        while (iter.hasNext())
-        {
-            carro = iter.next();
-            if (carro.getAfinidade() >= 10)
-            {
-                view.insert(i, carro);
-                ++i;
-            }
-        }
-    }
-
+    
     public void Imprimir_Tudo(){
         ListIterator<Carro> iter = this.carrosList.listIterator();
         Carro carro = null;
@@ -530,8 +516,9 @@ public class Recomendacao {
                 carro.setAvaliacaoPrev(result);
 
             }
-
-            if (carro.getAfinidade() >= 10)
+            int afinidade = 0;
+            afinidade = this.carrosList.getFirst().getAfinidade();
+            if (carro.getAfinidade() == afinidade)
             {
                 view.insert(i, carro);
                 ++i;
