@@ -18,7 +18,7 @@ public class Recomendacao {
     public Carro usuario = new Carro();
     private View view;
     public LinkedList<ClienteMedia> clienteMediaList = new LinkedList<ClienteMedia>();
-    public LinkedList<Float> vetorPearson = new LinkedList<Float>();
+    //public LinkedList<Float> vetorPearson = new LinkedList<Float>();
 
     public Recomendacao(View view)
     {
