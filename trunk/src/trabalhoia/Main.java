@@ -14,7 +14,7 @@ public class Main {
         tela.setRecomendando(recomendando);
         recomendando.ProcessaArquivoCarro();
         recomendando.ProcessaArquivoCliente();
-        tela.setUsuario(interesse);
+        tela.setInteresse(interesse);
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

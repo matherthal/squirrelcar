@@ -13,7 +13,7 @@ public class Recomendacao {
     public LinkedList<Cliente> clienteList = new LinkedList<Cliente>();
     private Carro carro = new Carro();
     private Cliente cliente = new Cliente();
-    public Carro usuario = new Carro();
+    public Carro interesse = new Carro();
     private View view;
     public LinkedList<ClienteMedia> clienteMediaList = new LinkedList<ClienteMedia>();
 
@@ -44,7 +44,7 @@ public class Recomendacao {
     }
 
     //calcula a média do cliente
-    public void mediaUsuarios()
+    public void mediaInteresses()
     {
         ClienteMedia clienteMedia = new ClienteMedia();
 
@@ -182,75 +182,75 @@ public class Recomendacao {
     }
 
     //Seta o nível de afinidade que um usuário terá com um carro
-    public void Recomendacao(Interesse usuario){
+    public void Recomendacao(Interesse interesse){
         ListIterator<Carro> iter = this.carrosList.listIterator();
         Carro carro_aux = null;
         while (iter.hasNext()) {
             carro_aux = iter.next();
-            if (usuario.getMarca() != null && !usuario.getMarca().isEmpty())
+            if (interesse.getMarca() != null && !interesse.getMarca().isEmpty())
             {
-                if (carro_aux.getMarca().equalsIgnoreCase(usuario.getMarca()))
+                if (carro_aux.getMarca().equalsIgnoreCase(interesse.getMarca()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
-            if(usuario.getModelo() != null && !usuario.getModelo().isEmpty())
+            if(interesse.getModelo() != null && !interesse.getModelo().isEmpty())
             {
-                if(carro_aux.getModelo().equalsIgnoreCase(usuario.getModelo()))
+                if(carro_aux.getModelo().equalsIgnoreCase(interesse.getModelo()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
-            if(usuario.getPortas() != -1)
+            if(interesse.getPortas() != -1)
             {
-                if(carro_aux.getPortas() == (usuario.getPortas()))
+                if(carro_aux.getPortas() == (interesse.getPortas()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+1);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+1);
-            if(usuario.getCombustivel() != null && !usuario.getCombustivel().isEmpty())
+            if(interesse.getCombustivel() != null && !interesse.getCombustivel().isEmpty())
             {
-                if(carro_aux.getCombustivel().equalsIgnoreCase(usuario.getCombustivel()))
+                if(carro_aux.getCombustivel().equalsIgnoreCase(interesse.getCombustivel()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
-            if(usuario.getCor() != null && !usuario.getCor().isEmpty())
+            if(interesse.getCor() != null && !interesse.getCor().isEmpty())
             {
-                if(carro_aux.getCor().equalsIgnoreCase(usuario.getCor()))
+                if(carro_aux.getCor().equalsIgnoreCase(interesse.getCor()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
 
-            if(usuario.getPrecomin() != -1 && usuario.getPrecomax() != 999999)
+            if(interesse.getPrecomin() != -1 && interesse.getPrecomax() != 999999)
             {
-                if((carro_aux.getPreco() >= (usuario.getPrecomin())) && ((carro_aux.getPreco() <= (usuario.getPrecomax()))))
+                if((carro_aux.getPreco() >= (interesse.getPrecomin())) && ((carro_aux.getPreco() <= (interesse.getPrecomax()))))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
 
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
 
-            if(usuario.getAno() != -1)
+            if(interesse.getAno() != -1)
             {
-                if(carro_aux.getAno() == (usuario.getAno()))
+                if(carro_aux.getAno() == (interesse.getAno()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
 
-            if(usuario.getCategoria() != null && !usuario.getCategoria().isEmpty())
+            if(interesse.getCategoria() != null && !interesse.getCategoria().isEmpty())
             {
-                if(carro_aux.getCategoria().equalsIgnoreCase(usuario.getCategoria()))
+                if(carro_aux.getCategoria().equalsIgnoreCase(interesse.getCategoria()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
 
-            if(usuario.getCambio() != null && !usuario.getCambio().isEmpty())
+            if(interesse.getCambio() != null && !interesse.getCambio().isEmpty())
             {
-                if(carro_aux.getCambio().equalsIgnoreCase(usuario.getCambio()))
+                if(carro_aux.getCambio().equalsIgnoreCase(interesse.getCambio()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+1);
             }
             else
@@ -321,8 +321,8 @@ public class Recomendacao {
         return media;
     }
 
-    // A nota dos usuarios utilizadas para o calculo do Correlação
-    public float PegaNotaUsuarioProximo(String nome, String ID) {
+    // A nota dos interesses utilizadas para o calculo do Correlação
+    public float PegaNotaInteresseProximo(String nome, String ID) {
         ListIterator<Cliente> iter = this.clienteList.listIterator();
         Cliente cliente = null;
         float nota = 0;
@@ -349,7 +349,7 @@ public class Recomendacao {
         String nome_aux = null;
         ListIterator<Cliente> iter = this.clienteList.listIterator();
         ListIterator<Cliente> iter2 = this.clienteList.listIterator();
-        Cliente usuarioCorrente = null;
+        Cliente interesseCorrente = null;
         Cliente cliente2 = null;
         float dist = 0;
         String ID = null;
@@ -402,7 +402,7 @@ public class Recomendacao {
         return false;
     }
 
-    //Procura as 3 pessoas que estao + proximas do usuario
+    //Procura as 3 pessoas que estao + proximas do interesse
     public void setMenores ()
     {
         menor1 = 0;
@@ -453,7 +453,7 @@ public class Recomendacao {
 
     }
 
-    public void CalculandoNotaPrevista(Interesse usuario){
+    public void CalculandoNotaPrevista(Interesse interesse){
         //Vetores para a media e as notas das 3 pessoas + proximas
         double[] vetormedia = new double[3];
         double[] vetoravaliacao = new double[3];
@@ -461,7 +461,7 @@ public class Recomendacao {
         ListIterator<Carro> iter = this.carrosList.listIterator();
         Carro carro = null;
         int i = 0;
-        float notaUsuario = 0;
+        float notaInteresse = 0;
         float nota1 = 0;
         float nota2 = 0;
         float nota3 = 0;
@@ -473,7 +473,7 @@ public class Recomendacao {
         float sim2 = 0;
         float sim3 = 0;
 
-        DistanciaEuclidiana(usuario.getNome());
+        DistanciaEuclidiana(interesse.getNome());
         ImprimirMediaList();
         setMenores ();
 
@@ -486,13 +486,13 @@ public class Recomendacao {
         while (iter.hasNext())
         {
             carro = iter.next();
-            notaUsuario = PegaNotaUsuarioProximo(usuario.getNome(), carro.getID());
-            carro.setAvaliacao(notaUsuario);
+            notaInteresse = PegaNotaInteresseProximo(interesse.getNome(), carro.getID());
+            carro.setAvaliacao(notaInteresse);
             if (carro.getAvaliacao() <= -1)
             {
-                nota1 = PegaNotaUsuarioProximo(clienteMediaList.get(menor1).getNome(), carro.getID());
-                nota2 = PegaNotaUsuarioProximo(clienteMediaList.get(menor2).getNome(), carro.getID());
-                nota3 = PegaNotaUsuarioProximo(clienteMediaList.get(menor3).getNome(), carro.getID());
+                nota1 = PegaNotaInteresseProximo(clienteMediaList.get(menor1).getNome(), carro.getID());
+                nota2 = PegaNotaInteresseProximo(clienteMediaList.get(menor2).getNome(), carro.getID());
+                nota3 = PegaNotaInteresseProximo(clienteMediaList.get(menor3).getNome(), carro.getID());
                 if (nota1 == -1.0){nota1 = 0;}
                 if (nota2 == -1.0){nota2 = 0;}
                 if (nota3 == -1.0){nota3 = 0;}
@@ -502,7 +502,7 @@ public class Recomendacao {
                 media1 = AchaMedia(clienteMediaList.get(menor1).getNome());
                 media2 = AchaMedia(clienteMediaList.get(menor2).getNome());
                 media3 = AchaMedia(clienteMediaList.get(menor3).getNome());
-                mediaU = AchaMedia(usuario.getNome());
+                mediaU = AchaMedia(interesse.getNome());
                 vetormedia[0] = media1;
                 vetormedia[1] = media2;
                 vetormedia[2] = media3;
