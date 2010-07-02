@@ -45,6 +45,6 @@ public class Cliente implements Comparable {
     }
 
     public void setNota (float val) {
-    this.nota = val;
+        this.nota = val;
     }
 }

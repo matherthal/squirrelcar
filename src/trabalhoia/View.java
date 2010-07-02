@@ -687,12 +687,12 @@ public class View extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int nota = 0;
+        float nota = 0;
         if (jTextFieldID.getText().length()!= 0)
         {
             try
             {
-                nota = Integer.parseInt(jTextField9.getText());
+                nota = Float.parseFloat(jTextField9.getText());
             } catch(java.lang.NumberFormatException ex)
             {
                 JOptionPane.showMessageDialog(null, "Isso não é um número!",
