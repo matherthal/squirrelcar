@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -686,9 +687,6 @@ public class View extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cliente cliente = new Cliente();
-        cliente.setNome(jTextField6.getText());
-        cliente.setID(jTextFieldID.getText());
         int nota = 0;
         if (jTextFieldID.getText().length()!= 0)
         {
@@ -697,25 +695,37 @@ public class View extends javax.swing.JFrame {
                 nota = Integer.parseInt(jTextField9.getText());
             } catch(java.lang.NumberFormatException ex)
             {
-                JOptionPane.showMessageDialog(null, "isso não é um número!",
+                JOptionPane.showMessageDialog(null, "Isso não é um número!",
                         "Erro na nota", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
         }
-        cliente.setNota(nota);
-        //File arq = new File("EntradaClientes.txt");
-        String nome = jTextField6.getText()+espaco(jTextField6.getText().length(),19);
-        String ID = jTextFieldID.getText()+espaco(jTextFieldID.getText().length(),3);
-        String notaStr = jTextFieldID.getText()+espaco(jTextFieldID.getText().length(),4);
-        //String categoria = jComboBox6.getSelectedItem().toString()+
-        //        espaco(jComboBox6.getSelectedItem().toString().length(),11);
+        
+        String nome = jTextField6.getText();
+        String ID = jTextFieldID.getText();
+
         if (!recomendando.SearchNameEID(jTextField6.getText(), jTextFieldID.getText()))
         {
+            Cliente cliente = new Cliente();
+            cliente.setNome(jTextField6.getText());
+            cliente.setID(jTextFieldID.getText());
+            cliente.setNota(nota);
             recomendando.clienteList.add(cliente);
-            //gravar(arq,"\n"+nome+"  "+ID+"  "+notaStr+"  "+categoria);
-            //gravar(arq,"\n"+nome+"  "+ID+"  "+notaStr);
         }
+        else {            
+            Iterator<Cliente> iter = recomendando.clienteList.iterator();
+            while (iter.hasNext())
+            {
+                Cliente cliente = iter.next();
+                if (cliente.getNome().equalsIgnoreCase(nome) && cliente.getID().equalsIgnoreCase(ID))
+                {
+                    cliente.setNota(nota);
+                    break;
+                }
+            }
+        }
+        jButton2ActionPerformed(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -758,7 +768,7 @@ public class View extends javax.swing.JFrame {
             jLabelshowCategoria.setText("Categoria: " + categoria);
             jLabelshowCambio.setText("Cambio: " + cambio);
 
-            id = id.substring(1, id.length());
+            //id = id.substring(1, id.length());
             jTextFieldID.setText(id);
         }
     }//GEN-LAST:event_jTable1MousePressed

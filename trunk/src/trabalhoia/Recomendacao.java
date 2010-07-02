@@ -391,7 +391,7 @@ public class Recomendacao {
     }
 
     public boolean SearchNameEID(String nome_aux,String ID) {
-        for (int i = 0; i<clienteList.size(); i++)
+        for (int i = 0; i< clienteList.size(); i++)
         {
             if(clienteList.get(i).getNome().equalsIgnoreCase(nome_aux) &&
                     clienteList.get(i).getID().equalsIgnoreCase(ID))
