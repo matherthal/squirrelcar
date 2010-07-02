@@ -1,10 +1,8 @@
 package trabalhoia;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.Vector;
 import java.util.Collections;
 
 public class Recomendacao {
@@ -18,7 +16,6 @@ public class Recomendacao {
     public Carro usuario = new Carro();
     private View view;
     public LinkedList<ClienteMedia> clienteMediaList = new LinkedList<ClienteMedia>();
-    //public LinkedList<Float> vetorPearson = new LinkedList<Float>();
 
     public Recomendacao(View view)
     {
@@ -88,7 +85,7 @@ public class Recomendacao {
     //Ordena Os clientes alfabeticamente
     public void ordenarporNome()
     {
-        Cliente trocar = new Cliente();
+        /*Cliente trocar = new Cliente();
         boolean trocou = true;
         while(trocou){
             trocou = false;
@@ -114,7 +111,8 @@ public class Recomendacao {
                    trocou = true;
                 }
             }
-        }
+        }*/
+        Collections.sort(this.clienteList);
     }
 
     //Ordena na interface por afinidade
@@ -189,14 +187,13 @@ public class Recomendacao {
         Carro carro_aux = null;
         while (iter.hasNext()) {
             carro_aux = iter.next();
-            if (usuario.getMarca() != null && !usuario.getMarca().equals("Indiferente"))
+            if (usuario.getMarca() != null && !usuario.getMarca().isEmpty())
             {
                 if (carro_aux.getMarca().equalsIgnoreCase(usuario.getMarca()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
             if(usuario.getModelo() != null && !usuario.getModelo().isEmpty())
             {
                 if(carro_aux.getModelo().equalsIgnoreCase(usuario.getModelo()))
@@ -204,7 +201,6 @@ public class Recomendacao {
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
             if(usuario.getPortas() != -1)
             {
                 if(carro_aux.getPortas() == (usuario.getPortas()))
@@ -212,15 +208,13 @@ public class Recomendacao {
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+1);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
-            if(usuario.getCombustivel() != null && !usuario.getCombustivel().equals("Indiferente"))
+            if(usuario.getCombustivel() != null && !usuario.getCombustivel().isEmpty())
             {
                 if(carro_aux.getCombustivel().equalsIgnoreCase(usuario.getCombustivel()))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
             if(usuario.getCor() != null && !usuario.getCor().isEmpty())
             {
                 if(carro_aux.getCor().equalsIgnoreCase(usuario.getCor()))
@@ -228,16 +222,16 @@ public class Recomendacao {
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
+
             if(usuario.getPrecomin() != -1 && usuario.getPrecomax() != 999999)
             {
                 if((carro_aux.getPreco() >= (usuario.getPrecomin())) && ((carro_aux.getPreco() <= (usuario.getPrecomax()))))
                     carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
-                System.out.println("precomin = " + usuario.getPrecomin());
+
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
+
             if(usuario.getAno() != -1)
             {
                 if(carro_aux.getAno() == (usuario.getAno()))
@@ -245,7 +239,7 @@ public class Recomendacao {
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+2);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
+
             if(usuario.getCategoria() != null && !usuario.getCategoria().isEmpty())
             {
                 if(carro_aux.getCategoria().equalsIgnoreCase(usuario.getCategoria()))
@@ -253,7 +247,7 @@ public class Recomendacao {
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+3);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
+
             if(usuario.getCambio() != null && !usuario.getCambio().isEmpty())
             {
                 if(carro_aux.getCambio().equalsIgnoreCase(usuario.getCambio()))
@@ -261,7 +255,6 @@ public class Recomendacao {
             }
             else
                 carro_aux.setAfinidade(carro_aux.getAfinidade()+1);
-            System.out.println("Afinidade: " + carro_aux.getAfinidade());
             //total 20
             System.out.println("RECOMENDACAO-----------------------------");
             System.out.println("ID: " + carro_aux.getID());
@@ -279,7 +272,6 @@ public class Recomendacao {
         Carro carro_aux = null;
         Cliente cliente_aux2 = null;
 
-        //System.out.println("----------Categoria Interesse: " + categoria + "-------------------");
         while (iter.hasNext())
         {
             float nota = 0;
@@ -301,12 +293,8 @@ public class Recomendacao {
             System.out.println("Count: " + count);
             if (count != 0)
             {
-                /*Sean modificou aqui(inicio)*/
                 media = nota / count;
                 carro_aux.setNota((float) ((Math.round(media * 10.0)) / 10.0));
-                /*Sean modificou aqui(Fim)*/
-                //Original abaixo:
-                //carro_aux.setNota(media);
             }
             System.out.println("Media: " + media);
             System.out.println("-----------------------------------------");
@@ -369,19 +357,19 @@ public class Recomendacao {
         int w = 0;
 
 
-        for (int i = 0; i<clienteMediaList.size(); i++)
+        for (int i = 0; i< clienteMediaList.size(); i++)
         {
             nome_aux = clienteMediaList.get(i).getNome();
-            for (int j = 0; j<clienteList.size(); j++)
+            for (int j = 0; j< clienteList.size(); j++)
             {
 
                     if (clienteList.get(j).getNome().equalsIgnoreCase(nome))
                     {
-                        for (int k = 0; k<clienteList.size(); k++)
+                        for (int k = 0; k < clienteList.size(); k++)
                         {
                             if(clienteList.get(k).getNome().equalsIgnoreCase(nome_aux) && (clienteList.get(k).getID().equalsIgnoreCase(clienteList.get(j).getID())))
                             {
-                                dist = (float)(dist + Math.pow((clienteList.get(j).getNota()/10) - (clienteList.get(k).getNota()/10), 2));
+                                dist = (float)(dist + Math.pow((clienteList.get(j).getNota() / 10) - (clienteList.get(k).getNota() / 10), 2));
                             }
                         }
                     }
@@ -395,8 +383,7 @@ public class Recomendacao {
     private int SearchName(String nome_aux) {
         for (int i = 0; i<clienteMediaList.size(); i++)
         {
-            if(clienteMediaList.get(i).getNome().equalsIgnoreCase(nome_aux))
-            {
+            if(clienteMediaList.get(i).getNome().equalsIgnoreCase(nome_aux)) {
                return i;
             }
         }
@@ -416,7 +403,7 @@ public class Recomendacao {
     }
 
     //Procura as 3 pessoas que estao + proximas do usuario
-    public void acha3menores ()
+    public void setMenores ()
     {
         menor1 = 0;
         menor2 = 0;
@@ -488,7 +475,7 @@ public class Recomendacao {
 
         DistanciaEuclidiana(usuario.getNome());
         ImprimirMediaList();
-        acha3menores ();
+        setMenores ();
 
         System.out.println("VIZINHOS-----------------------------------------");
         System.out.println("Menor1:" + clienteMediaList.get(menor1).getNome());

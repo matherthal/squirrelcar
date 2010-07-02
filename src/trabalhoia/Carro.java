@@ -19,7 +19,11 @@ public class Carro implements Comparable {
       
     public int compareTo(Object o) {
         Carro carro = (Carro)o;
-        return carro.afinidade - this.afinidade;
+        int diff_afinidade = carro.afinidade - this.afinidade;
+        if (diff_afinidade == 0) {
+            return (int)(10 * (carro.avaliacao - this.avaliacao));
+        }
+        return diff_afinidade;
     }
 
     public String getMarca () {
