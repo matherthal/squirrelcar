@@ -1,12 +1,17 @@
 package trabalhoia;
 
-public class Cliente {
+public class Cliente implements Comparable {
     
     private String nome = null;
     private String categoria = null;
     private String id = null;
     private float nota = 0;
-    private float media = 0;    
+    private float media = 0;
+
+    public int compareTo(Object o) {
+        Cliente cliente = (Cliente)o;
+        return cliente.getNome().compareTo(this.getNome());
+    }
 
     public String getNome () {
     return nome;
