@@ -3,6 +3,7 @@ package trabalhoia;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class ParserCliente {
     public BufferedReader arqc;
@@ -20,9 +21,7 @@ public class ParserCliente {
 
     //lê uma linha do arquivo
     private String LerLinha() throws IOException{
-		//Arquivo esta pronto? Entao retorna linha String
-		//Senao , retorna vazio string;
-		return arqc.ready() ? arqc.readLine() : "" ;
+		return arqc.readLine();
 	}
 
     public Cliente LerClientesDoArquivo() throws IOException{
@@ -31,12 +30,15 @@ public class ParserCliente {
 		String nome, id, categoria;
 		String linha;
 
-		linha = this.LerLinha();
+
+		linha = arqc.readLine();
+                StringTokenizer st = new StringTokenizer(linha);
+
                 //Metodo .trim() retira espacos em branco , para o parseFloat funcionar
-		nome = linha.substring(0,19).trim();
-		id = linha.substring(21,24).trim();
-		notaSTR = linha.substring(26,30);
-                categoria = linha.substring(32,43);
+		nome = st.nextToken().trim();
+		id = st.nextToken().trim();
+		notaSTR = st.nextToken().trim();
+                categoria = st.nextToken().trim();
                 //Converte os strings para float
                 System.out.println("Nota: " + notaSTR);
 		nota = Float.parseFloat(notaSTR.trim());

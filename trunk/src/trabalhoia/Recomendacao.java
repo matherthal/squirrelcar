@@ -517,6 +517,7 @@ public class Recomendacao {
                 carro.setAvaliacaoPrev(result);
 
             }
+            Collections.sort(this.carrosList);
             int afinidade = 0;
             afinidade = this.carrosList.getFirst().getAfinidade();
             if (carro.getAfinidade() == afinidade)
