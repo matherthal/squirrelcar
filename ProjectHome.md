@@ -1,0 +1,2 @@
+É um sistema capaz de sugerir carros para um cliente segundo um determinado gosto deste cliente.
+É possível que o cliente dê nota, de maneira que o sistema possa usar isso para escolher melhor carros para ele. Assim como para outros que tenham um gosto parecido.
